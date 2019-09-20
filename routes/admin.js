@@ -278,37 +278,19 @@ router.post('/upload/:id',upload.single('avatar'),(req, res) => {
 
 /////////////////////////////////////////////////////////////////////////////////////
 
-
-// recovery pass
-// router.put('/recoveryPass/:id' , (req,res)=>{
-//   if(!req.user._id){
-//     res.status(500).send()
-//   }
-//   let ID = {_id:req.params.id}
-//   User.findByIdAndUpdate(req.params.id,{ mobile: user.mobile },{ $set: { password: user.mobile, lastUpdate: Date.now() } }, (err, update) => {
-//           if (err) return res.json({ success: false, msg: 'error', err });
-
-//           res.json({ success: true, msg: 'recovery passwor in phone.' })
-//       }
-//   )
-//   })
-/*------------------------------------------------------------------------------------------------------------------------------------
------------------=>RECOVERY PASSWORD<=-------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------------------------------------*/
+//-----------------RECOVERY PASSWORD USERS-------------------------------------------------------------------------------------------------
 
 router.put('/recoveryPass/:id', (req, res, next) => {
-  const { idUsers } = req.body
-  User.findOne({ mobile: idUsers }, (err, user) => {
-      if (err) return res.json({ success: false, msg: 'error', err });
-      User.updateOne(
-          { mobile: user.mobile },
-          { $set: { password: user.mobile, lastUpdate: Date.now() } },
-          (err, update) => {
-              if (err) return res.json({ success: false, msg: 'error', err });
-
-              res.json(update,{ success: true, msg: 'recovery passwor in phone.' })
-          }
-      )
+  let id = req.params.id
+  User.findById(req.params.id , (err, user) => {
+      User.findByIdAndUpdate(id ,{$set :
+        {password:user.mobile}
+      } ,(err)=>{
+        if(!err){
+          console.log("recovery is success");
+          res.send("recovery password is successful")
+        }
+      })
   });
 });
 
