@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <!-- 
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+  <link rel='stylesheet' href='/stylesheets/admin.css'>
+  <!------ Include the above in your HEAD tag ---------->
+
+  <title></title>
+
+</head>
+
+<body>
+  <!-- <ul><li> <a href="/api/login" onclick="return confirm('Are you sure that You want log out ?');"><i class="fas fa-power-off"></i><span> Logout</span></a></li></ul>
+   
+
+  <div class="container">
+    <table class="table table-dark">
+      
+      <thead>
+        <tr>
+          <th><i class="fas fa-sort-amount-down"></i></th>
+          <th>First name</th>
+          <th>Last name</th>
+          <th>Email</th>
+          <th>Username</th>
+          <th>Mobile</th>
+          <th> <a href="" class="btn btn-info">Edit</a> </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="trbodyadmin">
+        </tr>
+      </tbody>
+    </table>
+
+
+
+    
+    <div id="divTblUsers">
+        <table class="table table-dark" id="tblUsers" >
+            <thead>
+                
+            </thead>
+            <tbody id="tBody" >
+              
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+  </div>
+
+  
+  
+      <div class="todo-list-group container">
+          <div class="row col-12">
+              
+              <div class="card col-12  col-md-3  m-5" style="width: 18rem;">
+          
+                  <img src="..." class="card-img-top" id="images" alt="...">
+                  <div class="card-body">
+                      <h5 class="card-title text-danger" id="title"></h5>
+                      <p class="card-text text-success" id="content"></p><hr><br>
+                      <small class="c">create at: </small> <br> <br>
+                      <small class="l">lastUpdate: </small> <br><br>
+                      
+                  </div>
+              </div>
+          
+          </div>
+          </div> -->
+
+
+  <!-- //////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+
+
+
+
+
+  <div class="main ">
+    <div class="left ">
+      <img src="/uploads/<%= user.avatar%>" id="profilePic" class="img-fluid" alt="Responsive image">
+      <ul>
+        <li class="menu-heading">Dashboards</li>
+        <li><a data-toggle="tab" href="#overview"><i class="fa fa-home fa-lg"></i> Overview</a></li>
+        <li><a  href="/api/admin/allArticles"><i class="fa fa-table fa-lg"></i> All Articles</a></li>
+        <li> <a href="/api/logout" onclick="return confirm('Are you sure that You want log out ?');"><i
+              class="fa fa-power-off fa-lg"></i><span> Logout</span></a></li>
+
+        <li class="menu-heading">Pages</li>
+        <li><a data-toggle="tab" href="#user-profile"><i class="fa fa-street-view fa-lg"></i> User Profile</a></li>
+
+        <li class="active"><a href="admin/upload/<%=user._id%>"><i class="fa fa-camera fa-lg"></i> Upload
+           Avatar </a></li>
+        <li><a data-toggle="tab" href="#browse"><i class="fa fa-search fa-lg"></i> Browse</a></li>
+
+
+      </ul>
+    </div>
+    <div class="right">
+
+
+
+
+
+
+
+
+
+
+      <div class="container p-5 useadminTable">
+        
+        <table class="table table-dark ">
+
+          <thead>
+            <tr>
+              <th><i class="fas fa-sort-amount-down"></i></th>
+              <th>First name</th>
+              <th>Last name</th>
+              <th>Email</th>
+              <th>Username</th>
+              <th>Mobile</th>
+              <th> <a href="admin/edit/<%=user._id%>" class="btn btn-info"><i
+                    class="far fa-edit"></i><span>Edit</span></a>
+                <a href="admin/addArticle" class="btn btn-success"><i class="fas fa-pen"></i><span> Add
+                    Article</span></a>
+                     <!-- add article -->
+  
+  <a href="/api/admin/allArticles" class="btn btn-warning"><i class="fa fa-book"></i><span> All your article</span></a>
+              </th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="trbodyadmin">
+
+            </tr>
+          </tbody>
+        </table>
+        <!-- users -->
+        <div id="divTblUsers">
+          <table class="table table-dark" id="tblUsers">
+            <thead>
+
+            </thead>
+            <% table.forEach((table,i) => { %>
+            <tbody>
+              <tr>
+                <td><%=i+1%></td>
+                <td><%=table.firstName%></td>
+                <td><%=table.lastName%></td>
+                <td><%=table.email%></td>
+                <td><%=table.username%></td>
+                <td><%=table.mobile%></td>
+                <td ><img src="/uploads/<%=table.avatar%>" class="imageUsers" style="width: 50px"></td>
+                <td> <button class="btn btn-danger" id="delete-user" data-id=<%=table._id%>>Delete</button>
+                  <a href="admin/edit/<%=table._id%>" class="btn btn-info"><i
+                      class="far fa-edit"></i><span>Edit</span></a>
+                      <a href="admin/upload/<%=table._id%>" class="btn btn-light"><i class="fa fa-camera"></i>Avatar</a>
+                      <button class="btn btn-warning" id="recoveryPassword" data-id-user=<%=table._id%>>recovery pass</button>
+                </td>
+
+              </tr>
+            </tbody>
+            <% }) %>
+          </table>
+        </div>
+      </div>
+
+
+      
+
+
+
+
+    </div>
+  </div>
+
+  </div>
+  </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ <!-- modal profile picture -->
+
+ <div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Profile Avatar</h5>
+        <button type="button" class="close"   >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <img src="/uploads/<%= user.avatar%>" style="width: 100%" id="profilePic">
+      </div>
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-secondary" id="close">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--  -->
+
+
+
+
+
+
+
+
+
+
+  <% include ./partials/footer %>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="/javascripts/adminPanel.js"></script>
+</body>
+
+</html>

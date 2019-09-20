@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <title>Document</title>
+    
+       
+</head>
+
+<body>
+    <% include ./partials/header %>
+    <div class="row mt-5">
+        <div class="col-md-6 m-auto">
+            <div class="card card-body">
+                <h1 class="text-center mb-3">
+                    <i class="fas fa-user-plus"></i> Register</h1>
+                   
+                     <!-- message  -->
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <%= msg %>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <!--  -->
+                <form action="/api/register" method="POST" enctype="multipart/form-data">
+                   
+                    <div class="form-group">
+                        <label for="name">first Name</label>
+                        <input type="name" id="firstName" name="firstName" class="form-control"
+                            placeholder="Enter firstName"
+                            value="<%= typeof firstName != 'undefined' ? firstName : '' %>" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">last Name</label>
+                        <input type="name" id="lastName" name="lastName" class="form-control"
+                            placeholder="Enter lastName"
+                            value="<%= typeof lastName != 'undefined' ? lastName : '' %>" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Username</label>
+                        <input type="text" id="username" name="username" class="form-control"
+                            placeholder="Enter without @"
+                            value="<%= typeof username != 'undefined' ? username : '' %>" />
+                    </div>
+
+                    <div class="form-group">
+                       
+                       gender <br><br>
+                        <input type="radio" name="gender" value="man"> Male<br>
+                        <input type="radio" name="gender" value="woman"> Female<br>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email"
+                            value="<%= typeof email != 'undefined' ? email : '' %>" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mobile">mobile</label>
+                        <input type="text" id="mobile" name="mobile" class="form-control"
+                            placeholder="Enter phone number"
+                            value="<%= typeof mobile != 'undefined' ? mobile : '' %>" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" class="form-control"
+                            placeholder="Create Password"
+                            value="<%= typeof password != 'undefined' ? password : '' %>" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password2">Confirm Password</label>
+                        <input type="password" id="password2" name="password2" class="form-control"
+                            placeholder="Confirm Password"
+                            value="<%= typeof password2 != 'undefined' ? password2 : '' %>" />
+                    </div>
+
+                    <button type="submit" class="btn text-white bg-success btn-block">
+                        Register
+                    </button>
+                </form>
+
+                <p class="lead mt-4">Have An Account? <a class=" text-success" href="/api/login">Login</a> or you want go
+                    <a class=" text-success" href="/">home</a>?
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <% include ./partials/footer %>
+</body>
+
+</html>

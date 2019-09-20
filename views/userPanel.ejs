@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+  <!------ Include the above in your HEAD tag ---------->
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+ 
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+    integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+  <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
+  <link rel="stylesheet" href="/stylesheets/user.css">
+  <title></title>
+
+</head>
+
+<body>
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-offset-12">
+        <div class="profile-bar">
+          <div class="contents">
+            <br>
+            <div >
+                <img src="/uploads/<%= user.avatar%>" class="" id="profilePic" style="border-radius:10px" alt="avatar">
+            </div>
+            
+          <br>
+
+            <p class="profile-name">WellCome ,<span class="text-danger"> <%= user.firstName %>
+                <%= user.lastName %></span>!</p>
+            <p class="profile-description">You haven't miss any task this week!</p>
+            <div class="buttons">
+              <ul>
+                <li>
+                  <a href="/api/user/allArticles"><i class="ti-book"></i><span> All your article</span></a>
+                </li>
+                <li>
+                  <a href="user/addArticle"><i class="ti-pencil"></i><span> Add Article</span></a>
+                </li>
+                <li>
+                  <a href="user/upload/<%=user._id%>" id="upload" ><i class="ti-camera"></i><span>Upload</span></a>
+                </li>
+                <!-- log out -->
+                <li>
+                  <a href="/api/logout" onclick="return confirm('Are you sure that You want log out ?');"><i
+                      class="ti-power-off"></i><span> Logout</span></a>
+                </li>
+              </ul>
+              <p>create this account at : <span class="text-danger"> <%= user.createAt %></span></p>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- table user -->
+  <div class="container">
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th>Role</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>username</th>
+          <th>mobile</th>
+          <th>Email</th>
+          <th>Password</th>
+          <th>Gender</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+
+          <td><%=user.role%></td>
+          <td><%=user.firstName %></td>
+          <td><%= user.lastName %></td>
+          <td><%= user.username %></td>
+          <td><%= user.mobile%></td>
+          <td><%=user.email%></td>
+          <td><%= user.password%></td>
+          <td><%= user.gender%></td>
+
+          <td> <a href="user/edit/<%=user._id%>" id="edit" class="btn btn-info"><i class="fas fa-edit">edit</i></a>
+            <a href="user/delete/<%=user._id%>" id="deleterow" class="btn btn-danger"
+              onclick="return confirm('Are you sure to delete this Account ?');"><i class="fas fa-trash"> delete
+                account</i></a>
+
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+
+    <!-- aks -->
+
+    <!-- <div class="container bg-dark">
+
+      
+      <form action="./upload" method="POST" enctype="multipart/form-data">
+        <div class="file-field input-field row">
+          <div class="btn">
+            <span>File</span><br>
+            <input name="avatar" type="file">
+          </div>
+          <div class="file-path-wrapper mt-4">
+            <input class="file-path validate" type="text">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-dark">Submit</button>
+
+      </form>
+      <br>
+
+    </div> -->
+
+
+
+
+
+    <p>last Update : <span class="text-info"> <%= user.lastUpdate %></span></p>
+  </div>
+
+  <!-- <a href="/api/user/allArticles" class="btn btn-info">All my Articles</a> -->
+
+  <!-- <div class="container">
+    
+   <div class="card  mt-5 bg-dark" id="showART">
+    
+        <h3 class="ArticlesH3">Articles</h3>
+        
+      </div>
+   </div> -->
+   
+
+
+
+
+  </div>
+
+
+
+  <!-- modal profile picture -->
+
+  <div class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Profile Avatar</h5>
+            <button type="button" class="close"   >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <img src="/uploads/<%= user.avatar%>" style="width: 100%" id="profilePic">
+          </div>
+          <div class="modal-footer">
+            
+            <button type="button" class="btn btn-secondary" id="close">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!--  -->
+  <% include ./partials/footer %>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="/javascripts/userPanel.js"></script>
+</body>
+
+</html>

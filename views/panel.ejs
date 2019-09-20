@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <link rel="stylesheet" href="/css/bootstrap.min.css">
+   
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+   <link rel="stylesheet" href="/stylesheets/public.css">
+    <title>Document</title>
+    
+</head>
+
+<body >
+    
+
+  <% include ./partials/header %>
+
+
+
+
+  <div class="todo-list-group container">
+    <div class="row col-12">
+        <% articles.forEach((articles,number) => { %>
+        <div class="card col-12  col-md-3  m-5 cardArticles" style="width: 18rem;">
+    
+            <img src="/uploads/<%=articles.image%>" class="card-img-top" id="images" alt="...">
+            <div class="card-body">
+                <h5 class="card-title text-danger" id="title"><%=articles.title%></h5>
+                <p class="card-text text-success" id="content"><%=articles.content%></p><hr><br>
+                <small>create at: <%=articles.createAt%></small> <br> <br>
+                <small>lastUpdate: <%=articles.lastUpdate%></small> <br><br><hr>
+
+              
+                <div calss="container row">
+                <!-- <a href="/index/publicArticle/<%=articles.id%>" id="" class="btn btn-primary">more</a> -->
+                <button id="singlePublic" class="btn btn-primary" data-id= <%=articles._id%>>more</button>
+                
+                </div>
+                <small> <b> writen by:</b> <%=articles.owner.firstName%> <%=articles.owner.lastName%></small> <br><br>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+    </div>
+ 
+
+
+
+
+
+
+    <div class="container ">
+      <div class="row col-12">
+          
+          <div class="card col-12 m-5 singlePage" style="width: 18rem; text-align: center">
+      
+              <img src="" id="imgArt" class="card-img-top" alt="">
+              <div class="card-body">
+                  <h5 class="card-title text-success" id="titleArt"></h5>
+                  <p class="card-text text-danger" id="contentArt"></p> <hr>
+                  <small id="creatArt">create at: </small> <br> <br>
+                  <small id="updatArt">last update: </small> <br><br>
+                  <small class="text-info" id="ownerArt"><b class="text-warning">author: </b></small> <br> <br>
+                   <button id="returnPUblics" class="btn btn-success">Back</button>
+                  
+              </div>
+          </div>
+          
+      </div>
+      </div>
+<!-- <div class="row mt-5">
+    <div class="col-md-6 m-auto">
+        <div class="card card-body text-center">
+            <h1><i class="fab fa-angellist fa-3x text-body"></i></h1>
+            <p>Create an account or login</p>
+            <a href="/api/register" class="btn text-white bg-danger btn-block mb-2">Register</a>
+            <a href="/api/login" class="btn btn-secondary btn-block">Login</a>
+        </div>
+    </div>
+</div> -->
+
+
+
+
+
+
+<% include ./partials/footer %>
+<script src="/js/bootstrap.min.js"></script>
+ 
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="/javascripts/publicPanel.js"></script>
+ </body>
+
+</html>

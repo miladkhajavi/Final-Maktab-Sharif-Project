@@ -1,0 +1,17 @@
+body{
+    background-color: rgb(208, 189, 253);
+
+}
+.cardArticles ,.singlePage{
+    box-shadow: 0 0 10px black !important;
+    background-color: rgb(231, 222, 252);
+    border-radius: 10px;
+}
+.cardArticles:hover ,.singlePage:hover{
+    background-color: rgb(172, 172, 172);
+}
+.aksArticleEdit{
+    width: 200px;
+    box-shadow: 0 0 20px black;
+    border-radius: 5px
+}

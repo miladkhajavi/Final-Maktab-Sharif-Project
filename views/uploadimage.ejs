@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+     <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/style.css'>
+</head>
+
+<body>
+        <form method="POST" enctype="multipart/form-data"  class="border classForm p-4 col-4 m-2 ">
+            <h3><%=title%></h3>
+            <p class="text-success"><%=msg%></p>
+            <table class="col-12">
+<tr>
+    <td>Change Pic:</td>
+    <td>
+       <input type="file" name="avatar" >
+       <input class="file-path validate" type="text" >
+       <img src="/uploads/<%=user.avatar%>" alt="" class="aksUserEdit">
+    </td>
+</tr>
+
+<tr>
+    <td>
+        <input class="btn btn-dark" id="sumbitEdit" type="submit">
+        <a class="btn btn-dark" href="/api/panel">Return</a>
+    </td>
+ </tr>
+</table>
+</form>
+
+<% include ./partials/footer %>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="/javascripts/userPanel.js"></script>
+</body>
+
+</html>
