@@ -153,18 +153,17 @@ $(document).ready(function(){
   
 
 
-  // ///////recovery
-  $('#recoveryPassword').click((e)=>{
+ // ///////recoveryPassword by admin
+  $('tbody').on('click', '#passwordRecovery', function(e) {
     e.preventDefault();
     const id = $(this).attr('data-id-user');
     $.ajax({
-      type:'put',
+      type:'PUT',
       url: '/api/admin/recoveryPass/'+id,
-      contentType: 'application/json',
-      data,
-      success: function(response){
-        console.log(response);
-        alert('Recovery Password');
+      
+      success: function(result){
+        console.log(result);
+        alert('Recovery Password ?');
         window.location.reload();
       },
       error: function(err){
